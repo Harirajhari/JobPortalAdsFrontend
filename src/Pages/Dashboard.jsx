@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/pages");
+      const res = await axios.get("https://jobportaladsbackend-production.up.railway.app/api/pages");
       setPages(Array.isArray(res.data) ? res.data : res.data.pages || []);
     } catch (error) {
       console.error("Failed to fetch pages:", error);
@@ -46,9 +46,9 @@ const Dashboard = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:3000/api/pages/${isEditing}`, form);
+        await axios.put(`https://jobportaladsbackend-production.up.railway.app/api/pages/${isEditing}`, form);
       } else {
-        await axios.post("http://localhost:3000/api/pages", form);
+        await axios.post("https://jobportaladsbackend-production.up.railway.app/api/pages", form);
       }
       setForm({
         title: "",
@@ -78,7 +78,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this page?")) return;
     try {
-      await axios.delete(`http://localhost:3000/api/pages/${id}`);
+      await axios.delete(`https://jobportaladsbackend-production.up.railway.app/api/pages/${id}`);
       fetchPages();
     } catch (err) {
       console.error("Delete failed:", err);

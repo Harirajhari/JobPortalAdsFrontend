@@ -15,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3000/api/admins/login', form);
+      const res = await axios.post('https://jobportaladsbackend-production.up.railway.app/api/admins/login', form);
       setMessage('Login successful!');
       setStatus('success');
       

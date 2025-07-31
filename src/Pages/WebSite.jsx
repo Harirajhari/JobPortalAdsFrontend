@@ -11,7 +11,7 @@ const WebSite = () => {
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/pages/${id}`);
+        const res = await fetch(`https://jobportaladsbackend-production.up.railway.app/api/pages/${id}`);
         if (!res.ok) throw new Error('Page not found');
         const data = await res.json();
         setPageData(data);
