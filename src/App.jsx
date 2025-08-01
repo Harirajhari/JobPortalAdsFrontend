@@ -4,11 +4,13 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Dashboard from './Pages/Dashboard';
 import WebSite from './Pages/WebSite';
+import HomePage from './Pages/HomePage';
 
 function App() {
   return (
     <Router>
       <Routes>
+         <Route path="/" element={<HomePage />} />
         <Route path={`/job/:id`} element={<WebSite />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
