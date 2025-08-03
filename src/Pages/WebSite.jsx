@@ -18,13 +18,7 @@ const WebSite = () => {
 
         // Parse content into sections
         const raw = data.content.replace(/\\n/g, '\n').split('\n');
-        const keys = [
-          'About the Company',
-          'Job Description',
-          'Key Responsibilities',
-          'What Will You Learn'
-        ];
-
+        const keys = ['About the Company', 'Job Description', 'Key Responsibilities', 'What Will You Learn'];
         const parsed = {};
         let current = '', lines = [];
         for (let line of raw) {
@@ -39,7 +33,6 @@ const WebSite = () => {
         }
         if (current) parsed[current] = lines.join('\n').trim();
         setContentSections(parsed);
-
       } catch (err) {
         setError(err.message);
       } finally {
@@ -49,6 +42,17 @@ const WebSite = () => {
 
     fetchPageData();
   }, [id]);
+
+  // Initialize Google AdSense units
+  useEffect(() => {
+    if (window.adsbygoogle && pageData?.ad_config?.google_adsense) {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error("AdSense error:", e);
+      }
+    }
+  }, [pageData]);
 
   const renderContent = (text) =>
     text.split('\n').map((line, i) =>
@@ -80,7 +84,7 @@ const WebSite = () => {
         </div>
       </header>
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="bg-gradient-to-r from-blue-50 to-indigo-100 py-10 px-4">
         <div className="container mx-auto flex flex-col md:flex-row items-center gap-6">
           {pageData.image_url && (
@@ -98,22 +102,25 @@ const WebSite = () => {
         </div>
       </section>
 
-      {/* Main Content Area */}
+      {/* Layout Grid */}
       <div className="flex flex-col lg:flex-row">
-        {/* Left Ad Sidebar (Desktop only) */}
+        {/* Left Sidebar (Ad) */}
         <div className="hidden lg:block lg:w-[15%] p-4">
           {pageData.ad_config?.google_adsense && (
             <div className="sticky top-4 bg-white p-4 border border-dashed border-gray-300 rounded-lg text-center text-gray-500">
               <p className="text-xs mb-1">ADVERTISEMENT</p>
-              Google AdSense
-              <div className="h-64 w-full bg-gray-100 mt-2 flex items-center justify-center">
-                Ad Content
-              </div>
+              <ins className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-2288604683034868"
+                data-ad-slot="1234567890"  // Replace with your Ad Slot ID
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
             </div>
           )}
         </div>
 
-        {/* Center Content (70%) */}
+        {/* Center Content */}
         <main className="w-full lg:w-[70%] px-4 py-10 space-y-10">
           {/* About the Company */}
           {contentSections['About the Company'] && (
@@ -123,14 +130,19 @@ const WebSite = () => {
             </section>
           )}
 
-           {/* Google Ad (Top) */}
-        {pageData.ad_config?.google_adsense && (
-          <div className="bg-white p-6 border border-dashed border-gray-300 text-center text-gray-500 rounded-lg">
-            <p className="text-xs mb-1">ADVERTISEMENT</p>
-            Google AdSense - {pageData.ad_config.google_adsense}
-          </div>
-        )}
-
+          {/* Google Ad (Inline) */}
+          {pageData.ad_config?.google_adsense && (
+            <div className="bg-white p-6 border border-dashed border-gray-300 text-center text-gray-500 rounded-lg">
+              <p className="text-xs mb-1">ADVERTISEMENT</p>
+              <ins className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-2288604683034868"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
+            </div>
+          )}
 
           {/* Job Description */}
           {contentSections['Job Description'] && (
@@ -148,15 +160,7 @@ const WebSite = () => {
             </section>
           )}
 
-             {pageData.ad_config?.meta_adsense && (
-          <div className="bg-white p-6 border border-dashed border-gray-300 text-center text-gray-500 rounded-lg">
-            <p className="text-xs mb-1">ADVERTISEMENT</p>
-            Meta AdSense - {pageData.ad_config.meta_adsense}
-          </div>
-        )}
-
-
-           {/* Apply CTA */}
+          {/* Apply Button */}
           <div className="text-center pt-6">
             <a
               href={pageData.redirect_url || "#"}
@@ -176,8 +180,7 @@ const WebSite = () => {
             </section>
           )}
 
-       
-          {/* Apply CTA */}
+          {/* Apply Button (Again) */}
           <div className="text-center pt-6">
             <a
               href={pageData.redirect_url || "#"}
@@ -190,32 +193,35 @@ const WebSite = () => {
           </div>
         </main>
 
-        {/* Right Ad Sidebar (Desktop only) */}
+        {/* Right Sidebar (Ad) */}
         <div className="hidden lg:block lg:w-[15%] p-4">
-          {pageData.ad_config?.meta_adsense && (
+          {pageData.ad_config?.google_adsense && (
             <div className="sticky top-4 bg-white p-4 border border-dashed border-gray-300 rounded-lg text-center text-gray-500">
               <p className="text-xs mb-1">ADVERTISEMENT</p>
-              Meta AdSense
-              <div className="h-64 w-full bg-gray-100 mt-2 flex items-center justify-center">
-                Ad Content
-              </div>
+              <ins className="adsbygoogle"
+                style={{ display: 'block' }}
+                data-ad-client="ca-pub-2288604683034868"
+                data-ad-slot="1234567890"
+                data-ad-format="auto"
+                data-full-width-responsive="true"
+              ></ins>
             </div>
           )}
         </div>
       </div>
 
-      {/* Mobile Ads (Full width) */}
+      {/* Mobile-only Ads */}
       <div className="lg:hidden space-y-4 px-4 pb-10">
         {pageData.ad_config?.google_adsense && (
           <div className="bg-white p-4 border border-dashed border-gray-300 rounded-lg text-center text-gray-500">
             <p className="text-xs mb-1">ADVERTISEMENT</p>
-            Google AdSense
-          </div>
-        )}
-        {pageData.ad_config?.meta_adsense && (
-          <div className="bg-white p-4 border border-dashed border-gray-300 rounded-lg text-center text-gray-500">
-            <p className="text-xs mb-1">ADVERTISEMENT</p>
-            Meta AdSense
+            <ins className="adsbygoogle"
+              style={{ display: 'block' }}
+              data-ad-client="ca-pub-2288604683034868"
+              data-ad-slot="1234567890"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+            ></ins>
           </div>
         )}
       </div>
