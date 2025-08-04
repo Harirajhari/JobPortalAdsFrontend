@@ -78,13 +78,8 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/jobs" className="hover:text-white transition-colors duration-300">
+                <a href="/job" className="hover:text-white transition-colors duration-300">
                   Jobs
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="hover:text-white transition-colors duration-300">
-                  About Us
                 </a>
               </li>
             </ul>
@@ -94,7 +89,7 @@ const Footer = () => {
         {/* Footer Bottom Section */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} EnTaro Jobs Portal. All rights reserved.
+            &copy; {new Date().getFullYear()} Hiring jobs Portal. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center md:justify-start space-x-4">
             <a href="/privacy" className="text-sm text-gray-500 hover:text-white transition-colors duration-300">

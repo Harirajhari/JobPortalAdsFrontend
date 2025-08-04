@@ -103,7 +103,7 @@ const JobSearch = () => {
                     <Briefcase className="h-6 w-6 text-blue-600" />
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900">12,548+</div>
+                    <div className="font-bold text-gray-900">100+</div>
                     <div className="text-sm text-gray-500">Jobs Posted</div>
                   </div>
                 </div>
@@ -120,27 +120,6 @@ const JobSearch = () => {
                     <div className="text-xs text-gray-500">User Rating</div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Trust indicators */}
-            <div className="mt-16 grid grid-cols-3 gap-4 bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-gray-100">
-              <div className="text-center">
-                <div className="flex items-center justify-center gap-1 text-3xl font-bold text-blue-600">
-                  <span>98%</span>
-                </div>
-                <div className="text-gray-600">Success Rate</div>
-              </div>
-              <div className="text-center border-x border-gray-200">
-                <div className="flex items-center justify-center gap-1 text-3xl font-bold text-blue-600">
-                  <Clock className="h-6 w-6" />
-                  <span>24h</span>
-                </div>
-                <div className="text-gray-600">Avg. Response</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">5K+</div>
-                <div className="text-gray-600">Companies</div>
               </div>
             </div>
           </div>
