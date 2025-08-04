@@ -91,17 +91,7 @@ const Footer = () => {
           <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} Hiring jobs Portal. All rights reserved.
           </p>
-          <div className="flex flex-wrap justify-center md:justify-start space-x-4">
-            <a href="/privacy" className="text-sm text-gray-500 hover:text-white transition-colors duration-300">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="text-sm text-gray-500 hover:text-white transition-colors duration-300">
-              Terms of Service
-            </a>
-            <a href="/cookies" className="text-sm text-gray-500 hover:text-white transition-colors duration-300">
-              Cookie Policy
-            </a>
-          </div>
+       
         </div>
       </div>
     </footer>
