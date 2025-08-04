@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  Home, 
-  Briefcase, 
-  LogIn, 
-  UserPlus
-} from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Home, Briefcase, LogIn, UserPlus } from 'lucide-react';
 
 const NavBar = () => {
   const [isHovered, setIsHovered] = useState(null);
@@ -14,12 +9,20 @@ const NavBar = () => {
   return (
     <nav className="bg-gradient-to-r from-gray-800 to-blue-600 px-4 py-3 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-        {/* Logo and Mobile Menu Button */}
+        {/* Logo + Site Name */}
         <div className="w-full md:w-auto flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-white hover:text-yellow-300 transition-colors duration-300">
-            JOB Portal
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 text-white font-bold text-xl hover:text-yellow-300 transition-colors duration-300"
+          >
+            <img 
+              src="/logo.jpg" 
+              alt="HiringJob Logo" 
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
+            />
+            <span>HiringJob</span>
           </Link>
-          
+
           {/* Mobile Menu Button */}
           <button 
             className="md:hidden text-white focus:outline-none"
@@ -33,21 +36,19 @@ const NavBar = () => {
 
         {/* Navigation Links */}
         <div className={`${isMobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center gap-4 md:gap-6 w-full md:w-auto`}>
-          {/* Main Navigation */}
           <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4 md:gap-6">
             <NavLink 
               to="/" 
-              icon={<Home className="w-5 h-5" />}
-              label="HOME"
+              icon={<Home className="w-5 h-5" />} 
+              label="HOME" 
               isHovered={isHovered === 'home'}
               onMouseEnter={() => setIsHovered('home')}
               onMouseLeave={() => setIsHovered(null)}
             />
-            
             <NavLink 
-              to="/job/" // Example job ID, adjust as needed
-              icon={<Briefcase className="w-5 h-5" />}
-              label="JOBS"
+              to="/job/" 
+              icon={<Briefcase className="w-5 h-5" />} 
+              label="JOBS" 
               isHovered={isHovered === 'jobs'}
               onMouseEnter={() => setIsHovered('jobs')}
               onMouseLeave={() => setIsHovered(null)}
@@ -58,13 +59,13 @@ const NavBar = () => {
           <div className="flex gap-3 border-t md:border-t-0 pt-4 md:pt-0 border-white/20 w-full md:w-auto justify-center">
             <AuthButton 
               to="/login"
-              icon={<LogIn className="w-5 h-5" />}
+              icon={<LogIn className="w-5 h-5" />} 
               label="LOGIN"
               variant="outline"
             />
             <AuthButton 
               to="/signup"
-              icon={<UserPlus className="w-5 h-5" />}
+              icon={<UserPlus className="w-5 h-5" />} 
               label="SIGN UP"
               variant="solid"
             />
@@ -105,10 +106,7 @@ const AuthButton = ({ to, icon, label, variant = 'outline' }) => (
       group
     `}
   >
-    <span className={`
-      transition-all duration-300 
-      ${variant === 'solid' ? 'group-hover:scale-110' : 'group-hover:rotate-12'}
-    `}>
+    <span className={`transition-all duration-300 ${variant === 'solid' ? 'group-hover:scale-110' : 'group-hover:rotate-12'}`}>
       {icon}
     </span>
     <span className="hidden sm:inline-block">{label}</span>

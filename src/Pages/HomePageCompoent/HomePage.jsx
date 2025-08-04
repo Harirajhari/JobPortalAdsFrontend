@@ -12,43 +12,34 @@ import JobSearch from './JobSearch';
 import Testimonials from './Testimonials';
 import Newsletter from './Newsletter';
 import SocialMediaCarousel from './SocialMediaCarousel';
-import NavBar from './NavBar';
+import Footer from './Footer';
 
 // Career Navigation Component
+
 const CareerNavigation = () => {
   return (
-    <div className="career-navigation">
-      <div className="content-container">
-        <div className="text-content">
-          <h1 className="title">Navigate Your Career with Us!</h1>
-          <p className="description">
-            Explore our extensive job listing and discover opportunities tailored just for you.
-          </p>
-          <p className="sub-description">
-            Start your journey today and turn your dream job into a reality!
-          </p>
-          <button className="cta-button">Find a job</button>
-        </div>
-
-        <div className="stats-container">
-          <div className="stat-card">
-            
-          </div>
-          <div className="stat-card">
-           
-          </div>
-          <div className="stat-card">
-           
-          </div>
-          <div className="stat-card">
-
-          </div>
-          <div className="stat-card">
-            
-          </div> 
-        </div>
+    <section
+  className="relative bg-center bg-cover min-h-screen flex items-center justify-center text-white"
+>
+      <div className="absolute inset-0 bg-black bg-opacity-70 z-0" />
+      <div className="relative z-10 max-w-6xl px-6 py-20 text-center md:text-left space-y-6">
+        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+          Navigate Your <span className="text-indigo-400">Career</span> with Us!
+        </h1>
+        <p className="text-lg text-gray-200 max-w-xl">
+          Explore our extensive job listings and discover opportunities tailored just for you.
+        </p>
+        <p className="text-md text-gray-300 max-w-xl">
+          Start your journey today and turn your dream job into a reality!
+        </p>
+        <a
+          href="/job"
+          className="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-medium px-8 py-3 rounded-full shadow-lg transition-all duration-300 hover:-translate-y-1"
+        >
+          Find a Job
+        </a>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -57,8 +48,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       {/* Navigation Bar */}
-      <NavBar />
-      
+
       {/* Career Navigation/Hero Section */}
       <CareerNavigation />
       
@@ -69,52 +59,8 @@ const HomePage = () => {
       <SocialMediaCarousel />
       <Testimonials />
       <Newsletter />
-      
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-info">
-            <h3>EnTaro Jobs</h3>
-            <p>Connecting talent with opportunity</p>
-            <div className="social-icons">
-              <a href="#"><i className="fab fa-facebook"></i></a>
-              <a href="#"><i className="fab fa-twitter"></i></a>
-              <a href="#"><i className="fab fa-linkedin"></i></a>
-              <a href="#"><i className="fab fa-instagram"></i></a>
-            </div>
-          </div>
 
-          <div className="footer-links">
-            <div className="link-column">
-              <h4>For Job Seekers</h4>
-              <a href="/jobs">Browse Jobs</a>
-              <a href="/resume">Resume Builder</a>
-              <a href="/career-advice">Career Advice</a>
-            </div>
-            <div className="link-column">
-              <h4>For Employers</h4>
-              <a href="/post-job">Post a Job</a>
-              <a href="/pricing">Pricing</a>
-              <a href="/recruiting">Recruiting Solutions</a>
-            </div>
-            <div className="link-column">
-              <h4>Company</h4>
-              <a href="/about">About Us</a>
-              <a href="/contact">Contact</a>
-              <a href="/blog">Blog</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p>© 2025 EnTaro Jobs Portal. All rights reserved.</p>
-          <div className="legal-links">
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms of Service</a>
-            <a href="/cookies">Cookie Policy</a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
