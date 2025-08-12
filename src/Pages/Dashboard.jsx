@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FileText, ExternalLink, Pencil, Trash2, Save } from "lucide-react";
+import { API_BASE_URL } from '../apiConfig'; // adjust the path as needed
 
 const Dashboard = () => {
   const [pages, setPages] = useState([]);
@@ -16,7 +17,7 @@ const Dashboard = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("https://jobportaladsbackend-production.up.railway.app/api/pages");
+      const res = await axios.get(`${API_BASE_URL}/pages`);
       setPages(Array.isArray(res.data) ? res.data : res.data.pages || []);
     } catch (error) {
       console.error("Failed to fetch pages:", error);
@@ -46,9 +47,9 @@ const Dashboard = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        await axios.put(`https://jobportaladsbackend-production.up.railway.app/api/pages/${isEditing}`, form);
+        await axios.put(`${API_BASE_URL}/pages/${isEditing}`, form);
       } else {
-        await axios.post("https://jobportaladsbackend-production.up.railway.app/api/pages", form);
+        await axios.post(`${API_BASE_URL}/pages`, form);
       }
       setForm({
         title: "",
@@ -78,7 +79,7 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this page?")) return;
     try {
-      await axios.delete(`https://jobportaladsbackend-production.up.railway.app/api/pages/${id}`);
+      await axios.delete(`${API_BASE_URL}/pages/${id}`);
       fetchPages();
     } catch (err) {
       console.error("Delete failed:", err);

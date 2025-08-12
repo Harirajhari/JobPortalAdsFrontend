@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Briefcase, MapPin, Clock, DollarSign, ArrowRight, Star } from 'lucide-react';
+import { API_BASE_URL } from '../apiConfig'; // adjust the path as needed
 
 const AllJobListingsPage = () => {
   const [jobs, setJobs] = useState([]);
@@ -10,7 +11,7 @@ const AllJobListingsPage = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await fetch('https://jobportaladsbackend-production.up.railway.app/api/pages');
+        const response = await fetch(`${API_BASE_URL}/pages`);
         if (!response.ok) throw new Error('Failed to fetch job listings');
         const data = await response.json();
         setJobs(data);

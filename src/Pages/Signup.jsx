@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { User, Mail, Lock, CheckCircle2, XCircle } from 'lucide-react';
+import { API_BASE_URL } from '../apiConfig'; // adjust the path as needed
 
 const Signup = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '' });
@@ -13,7 +14,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://jobportaladsbackend-production.up.railway.app/api/admins/signup', form);
+      const res = await axios.post(`${API_BASE_URL}/admins/signup`, form);
       setMessage('Signup successful!');
       setStatus('success');
     } catch (err) {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../apiConfig';
 
 const WebSite = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const WebSite = () => {
   useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const res = await fetch(`https://jobportaladsbackend-production.up.railway.app/api/pages/${id}`);
+        const res = await fetch(`${API_BASE_URL}/pages/${id}`);
         if (!res.ok) throw new Error('Page not found');
         const data = await res.json();
         setPageData(data);
@@ -201,7 +202,7 @@ const WebSite = () => {
               <ins className="adsbygoogle"
                 style={{ display: 'block' }}
                 data-ad-client="ca-pub-2288604683034868"
-                data-ad-slot="1234567890"
+                data-ad-slot="1234567890"  // Replace with your Ad Slot ID
                 data-ad-format="auto"
                 data-full-width-responsive="true"
               ></ins>
