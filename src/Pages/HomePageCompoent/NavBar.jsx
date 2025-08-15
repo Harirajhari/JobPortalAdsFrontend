@@ -56,7 +56,7 @@ const NavBar = () => {
           </div>
 
           {/* Auth Buttons */}
-          <div className="flex gap-3 border-t md:border-t-0 pt-4 md:pt-0 border-white/20 w-full md:w-auto justify-center">
+          {/* <div className="flex gap-3 border-t md:border-t-0 pt-4 md:pt-0 border-white/20 w-full md:w-auto justify-center">
             <AuthButton 
               to="/login"
               icon={<LogIn className="w-5 h-5" />} 
@@ -69,7 +69,7 @@ const NavBar = () => {
               label="SIGN UP"
               variant="solid"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </nav>
